@@ -1,5 +1,5 @@
 import express from "express";
-import { createBlog } from "../controller/blogController";
+import { createBlog } from "../controller/blogController.js";
 
 const route = express.Router();
 

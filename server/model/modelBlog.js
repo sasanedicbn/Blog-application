@@ -1,13 +1,13 @@
-import mongoose,  from "mongoose";
+import mongoose from "mongoose";
 
 const blogSchema = new mongoose.Schema({
   user: {
     type: String,
-    require: true,
+    required: true,
   },
   text: {
     type: String,
-    require: true,
+    required: true,
   },
 });
 
