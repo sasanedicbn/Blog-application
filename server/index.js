@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import route from "./routes/blogRoutes";
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,3 +22,5 @@ mongoose
   .catch((err) => {
     console.log("ERROR" + err);
   });
+
+app.use("/api", route);
