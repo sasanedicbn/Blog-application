@@ -49,9 +49,12 @@ export const updateBlog = async (req, res) => {
     if (!singlePost) {
       return res.status(404).json({ message: "Blog posts not found" });
     }
-    const updatedPost = modelBlog.findByIdAndUpdate(id, req.body, {
-        new: true;
-    })
+    const updatedPost = modelBlog
+      .findByIdAndUpdate(id, req.body, {
+        new: true,
+      })
+      .lean();
+    res.status(200).json(updatedPost);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
