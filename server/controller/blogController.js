@@ -15,3 +15,15 @@ export const createBlog = async (req, res) => {
     res.status(500).json({ errorMessage: error.message });
   }
 };
+
+export const getAllPosts = async (req, res) => {
+  try {
+    const blogPosts = await modelBlog.find();
+    if (!blogPosts || blogPosts.length === 0) {
+      return res.status(404).json({ message: "Blog posts not found" });
+    }
+    res.status(200).json(blogPosts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
