@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createBlog,
+  deleteBlog,
   getAllPosts,
   getPostById,
   updateBlog,
@@ -12,5 +13,6 @@ route.post("/blog", createBlog);
 route.get("/blogs", getAllPosts);
 route.get("/blogs/:id", getPostById);
 route.put("/blogs/blog/:id", updateBlog);
+route.delete("/delete/blog/:id", deleteBlog);
 
 export default route;

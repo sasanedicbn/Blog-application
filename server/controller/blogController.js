@@ -59,3 +59,17 @@ export const updateBlog = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const deleteBlog = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const singlePost = await modelBlog.findById(id);
+    if (!singlePost) {
+      return res.status(404).json({ message: "Single post doesn't existing" });
+    }
+    await modelBlog.findByIdAndDelete(id);
+    res.status(200).json({ message: "User deleted succesufully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
