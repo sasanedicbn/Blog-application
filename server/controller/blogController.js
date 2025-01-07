@@ -41,3 +41,18 @@ export const getPostById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const updateBlog = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const singlePost = await modelBlog.findById(id);
+    if (!singlePost) {
+      return res.status(404).json({ message: "Blog posts not found" });
+    }
+    const updatedPost = modelBlog.findByIdAndUpdate(id, req.body, {
+        new: true;
+    })
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
