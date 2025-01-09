@@ -1,0 +1,68 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  display: flex;
+  margin: 20px;
+}
+
+.main {
+  flex: 3;
+  margin-right: 20px;
+}
+
+.header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.blog-post {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.blog-title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.blog-author {
+  font-size: 14px;
+  color: #555;
+}
+
+.blog-content {
+  font-size: 16px;
+  color: #444;
+}
+
+.sidebar {
+  flex: 1;
+  border-left: 1px solid #ddd;
+  padding-left: 20px;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
