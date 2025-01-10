@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .app {
   display: flex;
   flex-direction: column;
@@ -6,7 +11,9 @@
 
 .content {
   display: flex;
-  margin: 20px;
+  padding: 40px;
+  background-color: rgb(248, 248, 248);
+  height: 100vh;
 }
 
 .main {
@@ -15,10 +22,27 @@
 }
 
 .header {
-  background-color: #333;
+  background-color: #333333ed;
   color: white;
-  padding: 20px;
+  padding: 20px 40px;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header button {
+  background-color: #38d33de7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header button:hover {
+  background-color: #45a049;
 }
 
 .blog-post {
