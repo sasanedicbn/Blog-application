@@ -1,7 +1,7 @@
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <h2>Categories</h2>
+      <h2>CATEGORIES</h2>
       <ul>
         <li>Technology</li>
         <li>Lifestyle</li>
