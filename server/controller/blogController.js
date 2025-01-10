@@ -2,7 +2,7 @@ import modelBlog from "../model/modelBlog.js";
 
 export const createBlog = async (req, res) => {
   try {
-    const newUser = new modelBlog(req.body);
+    const newUser = new blogSchema(req.body);
     const { text } = newUser;
 
     const userExist = await modelBlog.findOne({ text });
@@ -19,6 +19,7 @@ export const createBlog = async (req, res) => {
 export const getAllPosts = async (req, res) => {
   try {
     const blogPosts = await modelBlog.find();
+    console.log(blogPosts, "consola");
     if (!blogPosts || blogPosts.length === 0) {
       return res.status(404).json({ message: "Blog posts not found" });
     }
