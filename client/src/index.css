@@ -109,7 +109,8 @@
 }
 
 .blog-actions svg:hover {
-  color: #2c3e50;
+  color: #272e36;
+  transform: scale(1.1);
 }
 
 .blog-author {
