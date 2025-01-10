@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
   if (!isOpen) return null;
 
