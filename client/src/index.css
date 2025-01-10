@@ -45,30 +45,6 @@
   background-color: #45a049;
 }
 
-.blog-post {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.blog-title {
-  margin: 0;
-  font-size: 24px;
-  color: #333;
-}
-
-.blog-author {
-  font-size: 14px;
-  color: #555;
-}
-
-.blog-content {
-  font-size: 16px;
-  color: #444;
-}
-
 .sidebar {
   flex: 1;
   border-left: 1px solid #ddd;
@@ -97,4 +73,54 @@
 }
 .sidebar li:active {
   font-weight: bold;
+}
+.blog-post {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-title {
+  margin: 0;
+  font-size: 26px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.blog-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.blog-actions svg {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.blog-actions svg:hover {
+  color: #2c3e50;
+}
+
+.blog-author {
+  font-size: 15px;
+  color: #7f8c8d;
+  margin-top: 5px;
+}
+
+.blog-content {
+  font-size: 18px;
+  color: #34495e;
+  margin-top: 10px;
+  line-height: 1.6;
 }
