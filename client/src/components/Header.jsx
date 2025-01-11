@@ -3,15 +3,42 @@ import BlogFormModal from "./BlogFormModal";
 
 function Header() {
   const [openModal, setOpenModal] = useState(false);
-  const [newBlogData, setNewBlogData] = useState([]);
 
-  console.log(newBlogData, "newBlogData");
+  const sendBlogData = async (blogData) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(blogData),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to add blog post");
+      }
+
+      const result = await response.json();
+      console.log("Uspješno sam dodao:", result);
+      return result;
+    } catch (error) {
+      console.error("Greška prilikom dodavanja bloga:", error);
+    }
+  };
+
   const openModalHandler = () => {
     setOpenModal(true);
   };
 
   const closeModalHandler = () => {
     setOpenModal(false);
+  };
+
+  const handleNewBlog = async (newBlog) => {
+    const addedBlog = await sendBlogData(newBlog);
+    if (addedBlog) {
+      console.log("Blog je dodat:", addedBlog);
+    }
+    closeModalHandler();
   };
 
   return (
@@ -22,10 +49,7 @@ function Header() {
         <BlogFormModal
           isOpen={openModal}
           onClose={closeModalHandler}
-          onSubmit={(newBlog) => {
-            setNewBlogData(newBlog);
-            closeModalHandler();
-          }}
+          onSubmit={handleNewBlog}
         />
       )}
     </header>

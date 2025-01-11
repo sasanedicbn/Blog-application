@@ -2,7 +2,7 @@ import modelBlog from "../model/modelBlog.js";
 
 export const createBlog = async (req, res) => {
   try {
-    const newUser = new blogSchema(req.body);
+    const newUser = new modelBlog(req.body);
     const { text } = newUser;
 
     const userExist = await modelBlog.findOne({ text });
