@@ -5,6 +5,7 @@ function Header() {
   const [openModal, setOpenModal] = useState(false);
 
   const sendBlogData = async (blogData) => {
+    console.log(blogData, "ovo su dolazni");
     try {
       const response = await fetch("http://localhost:5000/api/blog", {
         method: "POST",

@@ -3,8 +3,8 @@ import { useState } from "react";
 const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
     title: "",
-    author: "",
-    content: "",
+    user: "",
+    text: "",
   });
 
   const handleChange = (e) => {
@@ -15,7 +15,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({ title: "", author: "", content: "" });
+    setFormData({ title: "", user: "", text: "" });
     onClose();
   };
 
@@ -47,8 +47,8 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
             <input
               type="text"
               id="author"
-              name="author"
-              value={formData.author}
+              name="user"
+              value={formData.user}
               onChange={handleChange}
               required
             />
@@ -57,8 +57,8 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
             <label htmlFor="content">Content:</label>
             <textarea
               id="content"
-              name="content"
-              value={formData.content}
+              name="text"
+              value={formData.text}
               onChange={handleChange}
               required
             ></textarea>
