@@ -20,6 +20,8 @@ function App() {
     fetchBlogs();
   }, []);
 
+  console.log(blog, "blog");
+
   return (
     <div className="app">
       <Header />
@@ -29,6 +31,7 @@ function App() {
             blog.map((post, index) => (
               <BlogPost
                 key={index}
+                id={post._id}
                 title={post.title}
                 author={post.user}
                 content={post.text}
