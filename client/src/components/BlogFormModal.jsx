@@ -1,4 +1,26 @@
+import { useState } from "react";
+
 const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    content: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+    setFormData({ title: "", author: "", content: "" });
+    onClose();
+  };
+
+  console.log(formData, "formData");
+
   if (!isOpen) return null;
 
   return (
@@ -7,7 +29,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
         <button className="close-button" onClick={onClose}>
           &times;
         </button>
-        <h2>Add New Blog Post</h2>
+        <h2 className="form-title">Add New Blog Post</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="title">Title:</label>
@@ -41,7 +63,9 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
               required
             ></textarea>
           </div>
-          <button type="submit">Add Blog</button>
+          <button type="submit" className="btn-add">
+            Add Blog
+          </button>
         </form>
       </div>
     </div>

@@ -159,13 +159,20 @@
 
 .form-group {
   margin-bottom: 15px;
+  width: 350px;
+  padding: 5px;
 }
 
 label {
   display: block;
   margin-bottom: 5px;
+  color: rgb(40, 40, 40);
+  text-align: left;
 }
-
+.form-title{
+  margin: 22px 0 12px 0;
+  color: rgb(60, 59, 59);
+}
 input,
 textarea {
   width: 100%;
@@ -181,6 +188,9 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.btn-add {
+  width: 100%;
 }
 
 button:hover {
