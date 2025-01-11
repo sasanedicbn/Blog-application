@@ -1,7 +1,12 @@
 import { useState } from "react";
 
-const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
+const BlogFormModal = ({ isOpen, onClose, onSubmit, isEdit }) => {
   const [formData, setFormData] = useState({
+    title: "",
+    user: "",
+    text: "",
+  });
+  const [editFormData, setEditFormData] = useState({
     title: "",
     user: "",
     text: "",
@@ -20,7 +25,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
   };
 
   console.log(formData, "formData");
-
+  const saveEditingHandler = async () => {};
   if (!isOpen) return null;
 
   return (
@@ -37,7 +42,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
               type="text"
               id="title"
               name="title"
-              value={formData.title}
+              value={isEdit ? editFormData.title : formData.title}
               onChange={handleChange}
               required
             />
@@ -48,7 +53,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
               type="text"
               id="author"
               name="user"
-              value={formData.user}
+              value={isEdit ? editFormData.user : formData.user}
               onChange={handleChange}
               required
             />
@@ -58,14 +63,20 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
             <textarea
               id="content"
               name="text"
-              value={formData.text}
+              value={isEdit ? editFormData.text : formData.text}
               onChange={handleChange}
               required
             ></textarea>
           </div>
-          <button type="submit" className="btn-add">
-            Add Blog
-          </button>
+          {isEdit ? (
+            <button type="submit" className="btn-add">
+              Add Blog
+            </button>
+          ) : (
+            <button className="btn-add" onClick={saveEditingHandler}>
+              Save
+            </button>
+          )}
         </form>
       </div>
     </div>
