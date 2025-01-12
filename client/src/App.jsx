@@ -61,9 +61,7 @@ function App() {
       setBlog((prevBlogs) => [...prevBlogs, result]);
       console.log("Uspješno sam dodao:", result);
       return result;
-    } catch (error) {
-      console.error("Greška prilikom dodavanja bloga:", error);
-    }
+    } catch (error) {}
   };
 
   return (
