@@ -1,30 +1,8 @@
 import { useState } from "react";
 import BlogFormModal from "./BlogFormModal";
 
-function Header() {
+function Header({ sendBlogData }) {
   const [openModal, setOpenModal] = useState(false);
-
-  const sendBlogData = async (blogData) => {
-    console.log(blogData, "ovo su dolazni");
-    try {
-      const response = await fetch("http://localhost:5000/api/blog", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(blogData),
-      });
-      if (!response.ok) {
-        throw new Error("Failed to add blog post");
-      }
-
-      const result = await response.json();
-      console.log("Uspješno sam dodao:", result);
-      return result;
-    } catch (error) {
-      console.error("Greška prilikom dodavanja bloga:", error);
-    }
-  };
 
   const openModalHandler = () => {
     setOpenModal(true);

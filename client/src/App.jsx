@@ -15,7 +15,6 @@ function App() {
         const data = await response.json();
         console.log(data, "risponz");
         setBlog(data);
-        toast.success("Blog posts loaded successfully!");
       } catch (error) {
         console.log("Error", error);
         toast.error("Failed to load blog posts.");
@@ -82,7 +81,7 @@ function App() {
           {blog.length > 0 ? (
             blog.map((post, index) => (
               <BlogPost
-                key={index}
+                key={post._id}
                 id={post._id}
                 title={post.title}
                 author={post.user}
