@@ -20,7 +20,28 @@ function App() {
     fetchBlogs();
   }, []);
 
-  console.log(blog, "blog");
+  const deletePost = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/delete/blog/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete post");
+      }
+      const result = await response.json();
+      setBlog((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
+      console.log("Blog post deleted:", result);
+    } catch (error) {
+      console.error("Error deleting blog post:", error);
+    }
+  };
 
   return (
     <div className="app">
@@ -35,6 +56,7 @@ function App() {
                 title={post.title}
                 author={post.user}
                 content={post.text}
+                deletePost={deletePost}
               />
             ))
           ) : (

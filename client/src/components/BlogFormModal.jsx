@@ -1,12 +1,7 @@
 import { useState } from "react";
 
-const BlogFormModal = ({ isOpen, onClose, onSubmit, isEdit }) => {
+const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
   const [formData, setFormData] = useState({
-    title: "",
-    user: "",
-    text: "",
-  });
-  const [editFormData, setEditFormData] = useState({
     title: "",
     user: "",
     text: "",
@@ -25,7 +20,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit, isEdit }) => {
   };
 
   console.log(formData, "formData");
-  const saveEditingHandler = async () => {};
+
   if (!isOpen) return null;
 
   return (
@@ -42,7 +37,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit, isEdit }) => {
               type="text"
               id="title"
               name="title"
-              value={isEdit ? editFormData.title : formData.title}
+              value={formData.title}
               onChange={handleChange}
               required
             />
@@ -53,7 +48,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit, isEdit }) => {
               type="text"
               id="author"
               name="user"
-              value={isEdit ? editFormData.user : formData.user}
+              value={formData.user}
               onChange={handleChange}
               required
             />
@@ -63,20 +58,14 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit, isEdit }) => {
             <textarea
               id="content"
               name="text"
-              value={isEdit ? editFormData.text : formData.text}
+              value={formData.text}
               onChange={handleChange}
               required
             ></textarea>
           </div>
-          {isEdit ? (
-            <button type="submit" className="btn-add">
-              Add Blog
-            </button>
-          ) : (
-            <button className="btn-add" onClick={saveEditingHandler}>
-              Save
-            </button>
-          )}
+          <button type="submit" className="btn-add">
+            Add Blog
+          </button>
         </form>
       </div>
     </div>
