@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import BlogPost from "./components/BlogPost";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [blog, setBlog] = useState([]);
@@ -13,8 +15,10 @@ function App() {
         const data = await response.json();
         console.log(data, "risponz");
         setBlog(data);
+        toast.success("Blog posts loaded successfully!");
       } catch (error) {
         console.log("Error", error);
+        toast.error("Failed to load blog posts.");
       }
     };
     fetchBlogs();
@@ -38,8 +42,10 @@ function App() {
       const result = await response.json();
       setBlog((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
       console.log("Blog post deleted:", result);
+      toast.success("Blog post deleted successfully!");
     } catch (error) {
       console.error("Error deleting blog post:", error);
+      toast.error("Failed to delete blog post.");
     }
   };
 
@@ -60,8 +66,12 @@ function App() {
       const result = await response.json();
       setBlog((prevBlogs) => [...prevBlogs, result]);
       console.log("Uspješno sam dodao:", result);
+      toast.success("Blog post added successfully!");
       return result;
-    } catch (error) {}
+    } catch (error) {
+      console.error("Greška prilikom dodavanja bloga:", error);
+      toast.error("Failed to add blog post.");
+    }
   };
 
   return (
@@ -86,6 +96,7 @@ function App() {
         </main>
         <Sidebar />
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }
