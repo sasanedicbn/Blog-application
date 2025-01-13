@@ -13,7 +13,6 @@ const BlogFormModal = ({
     text: "",
   });
 
-  // Ažuriraj `formData` kada se promene početni podaci (formData prop)
   useEffect(() => {
     if (initialData) {
       setFormData(initialData);
@@ -32,6 +31,13 @@ const BlogFormModal = ({
     onClose();
   };
 
+  // const handleNewBlog = async (newBlog) => {
+  //   const addedBlog = await sendBlogData(newBlog);
+  //   if (addedBlog) {
+  //     console.log("Blog je dodat:", addedBlog);
+  //   }
+  //   closeModalHandler();
+  // };
   if (!isOpen) return null;
 
   return (

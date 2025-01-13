@@ -1,18 +1,17 @@
 import { FaEdit, FaTrashAlt, FaSyncAlt } from "react-icons/fa";
 import { getSinglePost } from "./API/API";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BlogFormModal from "./BlogFormModal";
 
 function BlogPost({ title, author, content, id, deletePost }) {
   const [isEdit, setisEditing] = useState(false);
-  const [editData, setEditData] = useState(null); // Čuva podatke za uređivanje
+  const [editData, setEditData] = useState(null);
 
   const updatePostHandler = async () => {
     try {
       const data = await getSinglePost(id);
-      console.log("Podaci za edit:", data);
-      setEditData(data); // Postavi podatke
-      setisEditing(true); // Otvori modal
+      setEditData(data);
+      setisEditing(true);
     } catch (error) {
       console.error("Greška prilikom preuzimanja podataka:", error);
     }
@@ -20,7 +19,7 @@ function BlogPost({ title, author, content, id, deletePost }) {
 
   const closeModal = () => {
     setisEditing(false);
-    setEditData(null); // Resetuj podatke kada se modal zatvori
+    setEditData(null);
   };
 
   return (
@@ -34,10 +33,10 @@ function BlogPost({ title, author, content, id, deletePost }) {
               isOpen={isEdit}
               onClose={closeModal}
               onSubmit={(updatedData) =>
-                console.log("Updated data:", updatedData)
+                console.log("Updated data 32:", updatedData)
               }
               isEdit={true}
-              formData={editData} // Prosledi podatke za uređivanje
+              formData={editData}
             />
           )}
           <FaTrashAlt onClick={() => deletePost(id)} title="Delete" />
