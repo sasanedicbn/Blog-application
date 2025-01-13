@@ -46,3 +46,24 @@ import { toast } from "react-toastify";
       toast.error("Failed to delete blog post.");
     }
   };
+
+  export const sendBlogData = async (blogData) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(blogData),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to add blog post");
+      }
+
+      const result = await response.json();
+      toast.success("Blog post added successfully!");
+      return result;
+    } catch (error) {
+      toast.error("Failed to add blog post.");
+    }
+  };

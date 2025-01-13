@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
+const BlogFormModal = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  isEdit,
+  updatePostHandler,
+}) => {
   const [formData, setFormData] = useState({
     title: "",
     user: "",
@@ -18,6 +24,15 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
     setFormData({ title: "", user: "", text: "" });
     onClose();
   };
+  if (isEdit) {
+    const getEditData = async () => {
+      const dataforEdit = await updatePostHandler();
+      if (dataforEdit) {
+        setFormData(dataforEdit);
+      }
+    };
+    getEditData();
+  }
 
   console.log(formData, "formData");
 
@@ -37,7 +52,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
               type="text"
               id="title"
               name="title"
-              value={formData.title}
+              value={isEdit ? "" : formData.title}
               onChange={handleChange}
               required
             />
@@ -48,7 +63,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
               type="text"
               id="author"
               name="user"
-              value={formData.user}
+              value={isEdit ? "" : formData.user}
               onChange={handleChange}
               required
             />
@@ -58,7 +73,7 @@ const BlogFormModal = ({ isOpen, onClose, onSubmit }) => {
             <textarea
               id="content"
               name="text"
-              value={formData.text}
+              value={isEdit ? "" : formData.text}
               onChange={handleChange}
               required
             ></textarea>
