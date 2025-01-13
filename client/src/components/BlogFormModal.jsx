@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const BlogFormModal = ({
   isOpen,
   onClose,
   onSubmit,
   isEdit,
-  updatePostHandler,
+  formData: initialData,
 }) => {
   const [formData, setFormData] = useState({
     title: "",
     user: "",
     text: "",
   });
+
+  // Ažuriraj `formData` kada se promene početni podaci (formData prop)
+  useEffect(() => {
+    if (initialData) {
+      setFormData(initialData);
+    }
+  }, [initialData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,17 +31,6 @@ const BlogFormModal = ({
     setFormData({ title: "", user: "", text: "" });
     onClose();
   };
-  if (isEdit) {
-    const getEditData = async () => {
-      const dataforEdit = await updatePostHandler();
-      if (dataforEdit) {
-        setFormData(dataforEdit);
-      }
-    };
-    getEditData();
-  }
-
-  console.log(formData, "formData");
 
   if (!isOpen) return null;
 
@@ -44,7 +40,9 @@ const BlogFormModal = ({
         <button className="close-button" onClick={onClose}>
           &times;
         </button>
-        <h2 className="form-title">Add New Blog Post</h2>
+        <h2 className="form-title">
+          {isEdit ? "Edit Blog Post" : "Add New Blog Post"}
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="title">Title:</label>
@@ -52,7 +50,7 @@ const BlogFormModal = ({
               type="text"
               id="title"
               name="title"
-              value={isEdit ? "" : formData.title}
+              value={formData.title}
               onChange={handleChange}
               required
             />
@@ -63,7 +61,7 @@ const BlogFormModal = ({
               type="text"
               id="author"
               name="user"
-              value={isEdit ? "" : formData.user}
+              value={formData.user}
               onChange={handleChange}
               required
             />
@@ -73,13 +71,13 @@ const BlogFormModal = ({
             <textarea
               id="content"
               name="text"
-              value={isEdit ? "" : formData.text}
+              value={formData.text}
               onChange={handleChange}
               required
             ></textarea>
           </div>
           <button type="submit" className="btn-add">
-            Add Blog
+            {isEdit ? "Save Changes" : "Add Blog"}
           </button>
         </form>
       </div>
