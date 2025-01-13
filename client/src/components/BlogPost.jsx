@@ -1,5 +1,5 @@
 import { FaEdit, FaTrashAlt, FaSyncAlt } from "react-icons/fa";
-import { getSinglePost } from "./API/API";
+import { getSinglePost, sendBlogData } from "./API/API";
 import { useState } from "react";
 import BlogFormModal from "./BlogFormModal";
 
@@ -21,6 +21,13 @@ function BlogPost({ title, author, content, id, deletePost }) {
     setisEditing(false);
     setEditData(null);
   };
+  const handleNewBlog = async (newBlog) => {
+    const addedBlog = await sendBlogData(editData);
+    if (addedBlog) {
+      console.log("Blog je dodat:", addedBlog);
+    }
+    closeModalHandler();
+  };
 
   return (
     <article className="blog-post">
@@ -32,9 +39,7 @@ function BlogPost({ title, author, content, id, deletePost }) {
             <BlogFormModal
               isOpen={isEdit}
               onClose={closeModal}
-              onSubmit={(updatedData) =>
-                console.log("Updated data 32:", updatedData)
-              }
+              onSubmit={async (updatedData) => await sendBlogData(updatedData)}
               isEdit={true}
               formData={editData}
             />

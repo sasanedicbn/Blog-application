@@ -67,3 +67,27 @@ import { toast } from "react-toastify";
       toast.error("Failed to add blog post.");
     }
   };
+
+  export const updateBlog = async (id, blogData) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/blogs/blog/${id}`, {
+        method: "PUT", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(blogData), 
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to update blog post");
+      }
+  
+      const result = await response.json();
+      toast.success("Blog post updated successfully!");
+      return result;
+    } catch (error) {
+      console.error("Error while updating blog post:", error);
+      toast.error("Failed to update blog post.");
+    }
+  };
+  
