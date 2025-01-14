@@ -31,13 +31,6 @@ const BlogFormModal = ({
     onClose();
   };
 
-  // const handleNewBlog = async (newBlog) => {
-  //   const addedBlog = await sendBlogData(newBlog);
-  //   if (addedBlog) {
-  //     console.log("Blog je dodat:", addedBlog);
-  //   }
-  //   closeModalHandler();
-  // };
   if (!isOpen) return null;
 
   return (

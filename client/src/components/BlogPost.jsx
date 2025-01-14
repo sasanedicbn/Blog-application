@@ -22,13 +22,7 @@ function BlogPost({ title, author, content, id, deletePost }) {
     setisEditing(false);
     setEditData(null);
   };
-  const handleNewBlog = async (newBlog) => {
-    const addedBlog = await sendBlogData(editData);
-    if (addedBlog) {
-      console.log("Blog je dodat:", addedBlog);
-    }
-    closeModalHandler();
-  };
+
   const sendEditedBlog = async (id, blogData) => {
     console.log(id, blogData, "ovo gledaj");
     try {
