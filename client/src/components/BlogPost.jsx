@@ -1,7 +1,8 @@
 import { FaEdit, FaTrashAlt, FaSyncAlt } from "react-icons/fa";
-import { getSinglePost, sendBlogData } from "./API/API";
+import { getSinglePost, sendBlogData, updateBlog } from "./API/API";
 import { useState } from "react";
 import BlogFormModal from "./BlogFormModal";
+import { toast } from "react-toastify";
 
 function BlogPost({ title, author, content, id, deletePost }) {
   const [isEdit, setisEditing] = useState(false);
@@ -28,6 +29,15 @@ function BlogPost({ title, author, content, id, deletePost }) {
     }
     closeModalHandler();
   };
+  const sendEditedBlog = async (id, blogData) => {
+    console.log(id, blogData, "ovo gledaj");
+    try {
+      const response = await updateBlog(id, blogData);
+      return response;
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   return (
     <article className="blog-post">
@@ -39,7 +49,7 @@ function BlogPost({ title, author, content, id, deletePost }) {
             <BlogFormModal
               isOpen={isEdit}
               onClose={closeModal}
-              onSubmit={async (updatedData) => await sendBlogData(updatedData)}
+              onSubmit={(blogData) => sendEditedBlog(id, blogData)}
               isEdit={true}
               formData={editData}
             />

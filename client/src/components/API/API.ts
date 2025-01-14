@@ -69,6 +69,7 @@ import { toast } from "react-toastify";
   };
 
   export const updateBlog = async (id, blogData) => {
+    console.log(id, blogData, 'asd ovdje')
     try {
       const response = await fetch(`http://localhost:5000/api/blogs/blog/${id}`, {
         method: "PUT", 
