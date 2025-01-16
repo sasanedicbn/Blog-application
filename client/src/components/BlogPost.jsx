@@ -1,5 +1,5 @@
-import { FaEdit, FaTrashAlt, FaSyncAlt } from "react-icons/fa";
-import { getSinglePost, sendBlogData, updateBlog } from "./API/API";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { getSinglePost, updateBlog } from "./API/API";
 import { useState } from "react";
 import BlogFormModal from "./BlogFormModal";
 import { toast } from "react-toastify";
@@ -24,7 +24,6 @@ function BlogPost({ title, author, content, id, deletePost }) {
   };
 
   const sendEditedBlog = async (id, blogData) => {
-    console.log(id, blogData, "ovo gledaj");
     try {
       const response = await updateBlog(id, blogData);
       return response;
