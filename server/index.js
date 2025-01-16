@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import route from "./routes/blogRoutes.js";
 import cors from "cors";
+import routeUser from "./routes/userRoutes.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,6 +14,7 @@ dotenv.config();
 const PORT = process.env.PORT || 8000;
 const MONGOURL = process.env.MONGO_URL || 8000;
 
+app.use("/api/users", routeUser);
 mongoose
   .connect(MONGOURL)
   .then(() => {
