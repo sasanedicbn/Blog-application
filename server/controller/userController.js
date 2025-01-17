@@ -27,13 +27,13 @@ export const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     email,
     password,
+    hashedPassword,
   });
 
   if (user) {
     res.status(201).json({
       _id: user.id,
       email: user.email,
-      password: hashedPassword,
     });
   } else {
     res.status(400);
@@ -44,7 +44,18 @@ export const registerUser = asyncHandler(async (req, res) => {
 // route POST api/users/login
 // acess Public
 export const loginUser = async (req, res) => {
-  res.json({ message: "Login User" });
+  const { email, password } = req.body;
+  // Check for user email
+  const user = User.findOne({ email });
+  if (user && (await bcrypt.compare(password, user.password))) {
+    res.status(201).json({
+      _id: user.id,
+      email: user.email,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data");
+  }
 };
 // desc Get user data
 // route GET api/users/me
