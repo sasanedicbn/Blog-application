@@ -22,7 +22,23 @@ export const registerUser = asyncHandler(async (req, res) => {
   // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-  res.json({ message: "Register User" });
+
+  // Create user
+  const user = await User.create({
+    email,
+    password,
+  });
+
+  if (user) {
+    res.status(201).json({
+      _id: user.id,
+      email: user.email,
+      password: hashedPassword,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data");
+  }
 });
 // desc Authenticate  a user
 // route POST api/users/login
