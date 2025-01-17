@@ -60,8 +60,14 @@ export const loginUser = async (req, res) => {
 };
 // desc Get user data
 // route GET api/users/me
-// acess Public
+// acess Private
 export const getMe = async (req, res) => {
+  const { _id, email } = await User.findById(req.body.id);
+
+  res.status(200).json({
+    id: _id,
+    email,
+  });
   res.json({ message: "User data display" });
 };
 
