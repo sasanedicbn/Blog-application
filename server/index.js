@@ -8,6 +8,7 @@ import routeUser from "./routes/userRoutes.js";
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 dotenv.config();
 
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 8000;
 const MONGOURL = process.env.MONGO_URL || 8000;
 
 app.use("/api/users", routeUser);
+
 mongoose
   .connect(MONGOURL)
   .then(() => {
