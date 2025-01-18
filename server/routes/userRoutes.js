@@ -9,5 +9,5 @@ const routeUser = express.Router();
 
 routeUser.post("/", protect, registerUser);
 routeUser.post("/login", protect, loginUser);
-routeUser.get("/me", protect, getMe);
+
 export default routeUser;
