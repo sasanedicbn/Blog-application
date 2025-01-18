@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import asyncHandler from "express-async-handler";
 import User from "../model/userModel.js";
+import userModel from "../model/userModel.js";
 // desc Register new user
 // route POST api/users
 // acess Public
@@ -62,7 +63,7 @@ export const loginUser = async (req, res) => {
 // route GET api/users/me
 // acess Private
 export const getMe = async (req, res) => {
-  const { _id, email } = await User.findById(req.body.id);
+  const { _id, email } = await userModel.findById(req.user.id);
 
   res.status(200).json({
     id: _id,
