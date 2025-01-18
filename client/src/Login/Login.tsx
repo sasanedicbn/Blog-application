@@ -14,7 +14,7 @@ const Login = () => {
             id="username"
             name="username"
             className="form-input"
-            placeholder="Enter your username"
+            placeholder="Username"
           />
 
           <label htmlFor="password" className="form-label">
@@ -25,7 +25,7 @@ const Login = () => {
             id="password"
             name="password"
             className="form-input"
-            placeholder="Enter your password"
+            placeholder="Password"
           />
 
           <button type="submit" className="login-button">
