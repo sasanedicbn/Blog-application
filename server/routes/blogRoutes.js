@@ -10,7 +10,7 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const route = express.Router();
 
-route.post("/blog", protect, createBlog);
+route.post("/blog", createBlog);
 route.get("/blogs", protect, getAllPosts);
 route.get("/blogs/:id", getPostById);
 route.put("/blogs/blog/:id", updateBlog);
