@@ -1,9 +1,7 @@
-import React from "react";
-
 const RegisterForm = () => {
   return (
-    <div className="register-form">
-      <h2 className="register-title">Register</h2>
+    <div className="login-form">
+      <h2 className="login-title">Register</h2>
       <form className="form">
         <label htmlFor="username" className="form-label">
           Username:
@@ -37,18 +35,9 @@ const RegisterForm = () => {
           className="form-input"
           placeholder="Password"
         />
-
-        <label htmlFor="confirm-password" className="form-label">
-          Confirm Password:
-        </label>
-        <input
-          type="password"
-          id="confirm-password"
-          name="confirm-password"
-          className="form-input"
-          placeholder="Confirm Password"
-        />
-
+        <p className="register">
+          If you have account. Please first <a>login</a>
+        </p>
         <button type="submit" className="register-button">
           Register
         </button>
