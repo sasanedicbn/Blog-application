@@ -1,8 +1,8 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./Login/Login";
 import Home from "./components/Home";
+import Login from "./Login/Login";
 
 function App() {
   const routes = [
