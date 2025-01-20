@@ -263,3 +263,14 @@ button:hover {
 .login-button:hover {
   background-color: #0056b3;
 }
+.register{
+  color: rgb(97, 97, 97);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 8px;
+}
+.register a{
+  color: rgb(63, 63, 222);
+  text-decoration: underline;
+  cursor: pointer;
+}

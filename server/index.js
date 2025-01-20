@@ -15,7 +15,7 @@ dotenv.config();
 const PORT = process.env.PORT || 8000;
 const MONGOURL = process.env.MONGO_URL || 8000;
 
-// app.use("/api/users", routeUser);
+app.use("/api/users", routeUser);
 
 mongoose
   .connect(MONGOURL)

@@ -27,7 +27,9 @@ const Login = () => {
             className="form-input"
             placeholder="Password"
           />
-
+          <p className="register">
+            If you don't have account. Please first <a>register</a>
+          </p>
           <button type="submit" className="login-button">
             Log In
           </button>
