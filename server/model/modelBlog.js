@@ -10,7 +10,7 @@ const blogSchema = new mongoose.Schema({
     // required: true,
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "userModel",
+    ref: "User",
   },
   text: {
     type: String,
