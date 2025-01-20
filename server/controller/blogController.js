@@ -18,7 +18,7 @@ export const createBlog = async (req, res) => {
 
 export const getAllPosts = async (req, res) => {
   try {
-    const blogPosts = await modelBlog.find({ user: req.user.id });
+    const blogPosts = await modelBlog.find();
     console.log(blogPosts, "consola");
     if (!blogPosts || blogPosts.length === 0) {
       return res.status(404).json({ message: "Blog posts not found" });

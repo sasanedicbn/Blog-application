@@ -54,7 +54,7 @@ const BlogFormModal = ({
               required
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="author">Author:</label>
             <input
               type="text"
@@ -64,7 +64,7 @@ const BlogFormModal = ({
               onChange={handleChange}
               required
             />
-          </div>
+          </div> */}
           <div className="form-group">
             <label htmlFor="content">Content:</label>
             <textarea
