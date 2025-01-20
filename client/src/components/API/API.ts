@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
     try {
       const response = await fetch("http://localhost:5000/api/blogs");
       const data = await response.json();
+      console.log(data, 'za fetchblogs')
       return data;
     } catch (error) {
       toast.error("Failed to load blog posts.");
@@ -48,6 +49,7 @@ import { toast } from "react-toastify";
   };
 
   export const sendBlogData = async (blogData) => {
+    console.log('podaci za slanje', blogData)
     try {
       const response = await fetch("http://localhost:5000/api/blog", {
         method: "POST",

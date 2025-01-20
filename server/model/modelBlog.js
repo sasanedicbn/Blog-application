@@ -6,11 +6,11 @@ const blogSchema = new mongoose.Schema({
     required: true,
   },
   user: {
-    // type: String,
+    type: String,
     // required: true,
-    type: mongoose.Schema.Types.ObjectId,
+    // type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "User",
+    // ref: "User",
   },
   text: {
     type: String,
