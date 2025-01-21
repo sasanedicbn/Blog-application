@@ -1,6 +1,6 @@
 const RegisterForm = () => {
   return (
-    <div className="login-form">
+    <div className="form-container">
       <h2 className="login-title">Register</h2>
       <form className="form">
         <label htmlFor="username" className="form-label">
@@ -38,7 +38,7 @@ const RegisterForm = () => {
         <p className="register">
           If you have account. Please first <a>login</a>
         </p>
-        <button type="submit" className="register-button">
+        <button type="submit" className="login-button">
           Register
         </button>
       </form>

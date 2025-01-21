@@ -1,6 +1,6 @@
 const LoginForm = () => {
   return (
-    <div className="login-form">
+    <div className="form-container">
       <h2 className="login-title">Log In</h2>
       <form className="form">
         <label htmlFor="username" className="form-label">

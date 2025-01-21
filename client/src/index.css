@@ -206,9 +206,9 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-.login-form {
+.form-container {
   width: 400px;
-  height: 400px;
+  max-height: 400px;
   padding: 20px; 
   border: 1px solid #eaeaea;
   border-radius: 8px;
@@ -219,7 +219,7 @@ button:hover {
 .login-title {
   text-align: center;
   font-size: 1.8rem;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   color: #333;
 }
 
@@ -256,7 +256,7 @@ button:hover {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 24px;
+  margin-top: 15px;
   transition: all .3s ease-in-out;
 }
 
@@ -267,8 +267,8 @@ button:hover {
   color: rgb(97, 97, 97);
   font-size: 14px;
   text-align: center;
-  margin-top: 8px;
-  margin-bottom: 4px;
+  /* margin-top: 8px;
+  margin-bottom: 4px; */
 }
 .register a{
   color: rgb(63, 63, 222);
