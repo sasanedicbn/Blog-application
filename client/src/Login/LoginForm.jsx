@@ -1,4 +1,7 @@
-const LoginForm = () => {
+const LoginForm = ({ openRegisterHandler }) => {
+  const openRegisterForm = () => {
+    openRegisterHandler();
+  };
   return (
     <div className="form-container">
       <h2 className="login-title">Log In</h2>
@@ -25,7 +28,8 @@ const LoginForm = () => {
           placeholder="Password"
         />
         <p className="register">
-          If you don't have account. Please first <a>register</a>
+          If you don't have account. Please first{" "}
+          <a onClick={() => openRegisterForm()}>register</a>
         </p>
         <button type="submit" className="login-button">
           Log In
