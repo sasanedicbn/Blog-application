@@ -3,11 +3,17 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 
 const Login = () => {
-  const [openRegister, setOpenRegister] = useState(false);
+  const [openRegister, setOpenRegister] = useState(true);
+  const openRegisterHandler = () => {
+    setOpenRegister((prevState) => !prevState);
+  };
   return (
     <div className="login-backgorund">
-      {/* <LoginForm /> */}
-      <RegisterForm />
+      {openRegister ? (
+        <LoginForm openRegisterHandler={openRegisterHandler} />
+      ) : (
+        <RegisterForm openLoginHandler={openRegisterHandler} />
+      )}
     </div>
   );
 };
