@@ -8,7 +8,7 @@ const userModel = new mongoose.Schema({
   },
   password: {
     type: String,
-    require: [true, "Please add an password"],
+    require: [true, "Please add an email"],
   },
 });
 export default mongoose.model("User", userModel);

@@ -93,4 +93,27 @@ import { toast } from "react-toastify";
       toast.error("Failed to update blog post.");
     }
   };
-  
+  // API ABOUT USER
+
+  export const registerUser = async (credetinals) => {
+    console.log('podaci za slanje', credetinals)
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credetinals),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to add blog post");
+      }
+
+      const result = await response.json();
+      console.log(result, 'ovo je result od ')
+      toast.success("Blog post added successfully!");
+      return result;
+    } catch (error) {
+      toast.error("Failed to add blog post.");
+    }
+  };
