@@ -14,10 +14,6 @@ function App() {
       path: "/login",
       element: <Login />,
     },
-    // {
-    //   path: "/register",
-    //   element: <Login />,
-    // },
   ];
   const router = createBrowserRouter(routes);
 

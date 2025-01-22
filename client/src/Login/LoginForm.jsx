@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { loginUser } from "../components/API/API";
 
 const LoginForm = ({ openRegisterHandler }) => {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -14,8 +15,9 @@ const LoginForm = ({ openRegisterHandler }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await loginUser(formData);
     console.log("Podaci za prijavu:", formData);
   };
 
@@ -28,11 +30,11 @@ const LoginForm = ({ openRegisterHandler }) => {
         </label>
         <input
           type="text"
-          id="username"
-          name="username"
+          id="email"
+          name="email"
           className="form-input"
           placeholder="Username"
-          value={formData.username}
+          value={formData.email}
           onChange={handleChange}
         />
 

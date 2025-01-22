@@ -46,6 +46,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 // acess Public
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
+  console.log(email, password);
   // Check for user email
   const user = await User.findOne({ email });
   if (user && (await bcrypt.compare(password, user.password))) {
