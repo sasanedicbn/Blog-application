@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginUser } from "../components/API/API";
 
 const LoginForm = ({ openRegisterHandler }) => {
@@ -6,6 +7,8 @@ const LoginForm = ({ openRegisterHandler }) => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +20,10 @@ const LoginForm = ({ openRegisterHandler }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await loginUser(formData);
+    const response = await loginUser(formData);
+    if (response) {
+      navigate("/");
+    }
     console.log("Podaci za prijavu:", formData);
   };
 
@@ -25,15 +31,15 @@ const LoginForm = ({ openRegisterHandler }) => {
     <div className="form-container">
       <h2 className="login-title">Log In</h2>
       <form className="form" onSubmit={handleSubmit}>
-        <label htmlFor="username" className="form-label">
-          Username:
+        <label htmlFor="email" className="form-label">
+          Email:
         </label>
         <input
-          type="text"
+          type="email"
           id="email"
           name="email"
           className="form-input"
-          placeholder="Username"
+          placeholder="Email"
           value={formData.email}
           onChange={handleChange}
         />
