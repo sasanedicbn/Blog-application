@@ -8,6 +8,6 @@ import { protect } from "../middleware/authMiddleware.js";
 const routeUser = express.Router();
 
 routeUser.post("/login", registerUser);
-routeUser.post("/", protect, loginUser);
+routeUser.post("/login", loginUser);
 routeUser.get("/me", protect, getMe);
 export default routeUser;

@@ -110,10 +110,13 @@ import { toast } from "react-toastify";
       }
 
       const result = await response.json();
+      const token =  result.token
+      localStorage.setItem('token', token)
+      console.log(token, 'token')
       console.log(result, 'ovo je result od ')
       toast.success("Blog post added successfully!");
       return result;
     } catch (error) {
-      toast.error("Failed to add blog post.");
+      toast.error("Failed to register user.");
     }
   };
