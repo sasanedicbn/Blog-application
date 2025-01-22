@@ -98,7 +98,7 @@ import { toast } from "react-toastify";
   export const registerUser = async (credetinals) => {
     console.log('podaci za slanje', credetinals)
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", {
+      const response = await fetch("http://localhost:5000/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,11 +112,34 @@ import { toast } from "react-toastify";
       const result = await response.json();
       const token =  result.token
       localStorage.setItem('token', token)
-      console.log(token, 'token')
-      console.log(result, 'ovo je result od ')
-      toast.success("Blog post added successfully!");
+      toast.success("Register uccessfully!");
       return result;
     } catch (error) {
       toast.error("Failed to register user.");
+    }
+  };
+  export const loginUser = async (credetinals) => {
+    console.log('podaci za slanje', credetinals)
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credetinals),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to add blog post");
+      }
+
+      const result = await response.json();
+      // const token =  result.token
+      // localStorage.setItem('token', token)
+      // console.log(token, 'token')
+      console.log(result, 'ovo je result od logina')
+      toast.success("Blog post added successfully!");
+      return result;
+    } catch (error) {
+      toast.error("Failed to login user.");
     }
   };
