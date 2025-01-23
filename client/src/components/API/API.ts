@@ -142,31 +142,36 @@ import { toast } from "react-toastify";
       toast.error("Failed to register user.");
     }
   };
-  export const loginUser = async (credetinals) => {
-    console.log('podaci za slanje', credetinals)
-    const token = localStorage.getItem("token"); 
+  export const loginUser = async (credentials) => {
+    console.log("Podaci za slanje:", credentials);
+  
     try {
       const response = await fetch("http://localhost:5000/api/users/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, 
-          
+          "Content-Type": "application/json", 
         },
-        body: JSON.stringify(credetinals),
+        body: JSON.stringify(credentials), 
       });
+  
       if (!response.ok) {
-        throw new Error("Failed to add blog post");
+        throw new Error("Failed to login user");
       }
-
-      const result = await response.json();
-      // const token =  result.token
-      // localStorage.setItem('token', token)
-      // console.log(token, 'token')
-      console.log(result, 'ovo je result od logina')
-      toast.success("Blog post added successfully!");
-      return result;
+  
+      const result = await response.json(); 
+      const token = result.token; 
+  
+      if (token) {
+        localStorage.setItem("token", token);
+        console.log("Sačuvan token:", token);
+      }
+  
+      console.log(result, "Ovo je rezultat od logina");
+      toast.success("User logged in successfully!");
+      return result; 
     } catch (error) {
+      console.error("Failed to login user:", error.message);
       toast.error("Failed to login user.");
     }
   };
+  
