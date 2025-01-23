@@ -21,6 +21,7 @@ const LoginForm = ({ openRegisterHandler }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await loginUser(formData);
+    console.log(response, "ovaj legendo");
     if (response) {
       navigate("/");
     }
