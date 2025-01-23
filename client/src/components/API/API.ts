@@ -50,11 +50,13 @@ import { toast } from "react-toastify";
 
   export const sendBlogData = async (blogData) => {
     console.log('podaci za slanje', blogData)
+    const token = localStorage.getItem("token")
     try {
       const response = await fetch("http://localhost:5000/api/blog", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, 
         },
         body: JSON.stringify(blogData),
       });
