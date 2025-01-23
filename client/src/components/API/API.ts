@@ -1,8 +1,16 @@
 import { toast } from "react-toastify";
 
  export const getSinglePost = async (id) => {
+  const token = localStorage.getItem("token")
+
     try {
-      const response = await fetch(`http://localhost:5000/api/blogs/${id}`);
+      const response = await fetch(`http://localhost:5000/api/blogs/${id}`,{
+        method:'GET',
+        headers:{
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, 
+        }
+      });
 
       if (!response.ok) {
         throw new Error("Failed to get single post");
@@ -15,8 +23,16 @@ import { toast } from "react-toastify";
   };
 
  export const fetchBlogs = async () => {
+  const token = localStorage.getItem("token")
+
     try {
-      const response = await fetch("http://localhost:5000/api/blogs");
+      const response = await fetch("http://localhost:5000/api/blogs",{
+        method:'GET',
+        headers:{
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, 
+        }
+      });
       const data = await response.json();
       console.log(data, 'za fetchblogs')
       return data;
@@ -26,6 +42,8 @@ import { toast } from "react-toastify";
   };
 
   export const deletePost = async (id) => {
+    const token = localStorage.getItem("token")
+
     try {
       const response = await fetch(
         `http://localhost:5000/api/delete/blog/${id}`,
@@ -33,6 +51,7 @@ import { toast } from "react-toastify";
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, 
           },
         }
       );
@@ -74,11 +93,14 @@ import { toast } from "react-toastify";
 
   export const updateBlog = async (id, blogData) => {
     console.log(id, blogData, 'asd ovdje')
+    const token = localStorage.getItem("token")
+
     try {
       const response = await fetch(`http://localhost:5000/api/blogs/blog/${id}`, {
         method: "PUT", 
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, 
         },
         body: JSON.stringify(blogData), 
       });
