@@ -11,9 +11,9 @@ import { protect } from "../middleware/authMiddleware.js";
 const route = express.Router();
 
 route.post("/blog", protect, createBlog);
-route.get("/blogs", getAllPosts);
-route.get("/blogs/:id", getPostById);
-route.put("/blogs/blog/:id", updateBlog);
-route.delete("/delete/blog/:id", deleteBlog);
+route.get("/blogs", protect, getAllPosts);
+route.get("/blogs/:id", protect, getPostById);
+route.put("/blogs/blog/:id", protect, updateBlog);
+route.delete("/delete/blog/:id", protect, deleteBlog);
 
 export default route;
