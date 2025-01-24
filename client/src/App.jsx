@@ -3,16 +3,25 @@ import "react-toastify/dist/ReactToastify.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./Login/Login";
+import ProtectedRoute from "./routes/ProtectRoute";
 
 function App() {
   const routes = [
     {
       path: "/",
-      element: <Home />,
+      element: (
+        <ProtectedRoute>
+          <Home />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/login",
-      element: <Login />,
+      element: (
+        <ProtectedRoute>
+          <Login />
+        </ProtectedRoute>
+      ),
     },
   ];
   const router = createBrowserRouter(routes);
