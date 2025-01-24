@@ -50,7 +50,6 @@ const Home = () => {
             <p>Loading blog posts...</p>
           )}
         </main>
-        <Sidebar />
       </div>
     </div>
   );
