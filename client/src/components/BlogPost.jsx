@@ -1,6 +1,6 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { getSinglePost, updateBlog } from "./API/API";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BlogFormModal from "./BlogFormModal";
 import { toast } from "react-toastify";
 
@@ -26,6 +26,13 @@ function BlogPost({ title, author, content, id, deletePost }) {
   const sendEditedBlog = async (id, blogData) => {
     try {
       const response = await updateBlog(id, blogData);
+      if (response) {
+        const updatedPost = await getSinglePost(id);
+        console.log("trtr", updatedPost);
+
+        setEditData(updatedPost);
+        setisEditing(false);
+      }
       return response;
     } catch (err) {
       toast.error(err.message);
