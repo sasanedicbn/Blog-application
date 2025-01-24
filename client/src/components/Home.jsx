@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { deletePost, fetchBlogs, sendBlogData } from "./API/API";
 import BlogPost from "./BlogPost";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
 
 const Home = () => {
   const [blog, setBlog] = useState([]);
@@ -34,6 +33,7 @@ const Home = () => {
     <div className="app">
       <Header sendBlogData={sendBlogDataHandler} />
       <div className="content">
+        <h2>My blog app</h2>
         <main className="main">
           {blog.length > 0 ? (
             blog.map((post, index) => (
