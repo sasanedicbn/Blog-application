@@ -17,11 +17,7 @@ function App() {
     },
     {
       path: "/login",
-      element: (
-        <ProtectedRoute>
-          <Login />
-        </ProtectedRoute>
-      ),
+      element: <Login />,
     },
   ];
   const router = createBrowserRouter(routes);
