@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./Login/Login";
 import ProtectedRoute from "./routes/ProtectRoute";
+import PublicRoute from "./routes/PublicRoute";
 
 function App() {
   const routes = [
@@ -17,7 +18,11 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: (
+        <PublicRoute>
+          <Login />
+        </PublicRoute>
+      ),
     },
   ];
   const router = createBrowserRouter(routes);
